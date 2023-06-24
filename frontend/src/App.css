@@ -265,6 +265,7 @@ nav li:hover {
   flex: 0 fit-content;
   background-color:rgba(187, 196, 248, 0.9);
   display: flex;
+  align-content: center;
 }
 
 #chat-head > button {
@@ -286,9 +287,10 @@ nav li:hover {
 }
 
 #chat-head img {
-  padding: 5px;
-  width: 20px;
-  height: 20px;  
+  margin: auto;
+  padding-left: 7.5px;
+  width: 40px;
+  height: 40px;  
 }
 
 
@@ -297,11 +299,10 @@ nav li:hover {
   font-size: 2.0em;
   margin-block: 0;
   align-content: center;
-  padding-inline-start: 30px;
+  padding-inline-start: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  
 }
 
 #loading {
@@ -378,8 +379,6 @@ nav li:hover {
 }
 
 
-
-
 #messages p {
   margin-block: 0;
   word-wrap: wrap;
@@ -419,7 +418,6 @@ nav li:hover {
   font-weight: bold;
   text-align: center;
  }
-
 
 
  

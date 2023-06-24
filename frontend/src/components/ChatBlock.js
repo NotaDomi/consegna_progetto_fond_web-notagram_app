@@ -57,7 +57,7 @@ export default function ChatBlock({message, setMessage, messages, setMessages, s
   return (
     <>
         <header id="chat-head">
-          <img alt="profile" src="user.png"/>
+          <img id="chat-profile-image" alt="profile" src="user.png"/>
           <h2>{friend.user}</h2>
           <button onClick={updateHandler}> <FontAwesomeIcon icon={faArrowRotateRight} /> </button>
           </header>

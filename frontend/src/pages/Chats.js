@@ -14,6 +14,7 @@ export default function Chats({isLogged,setLogged,loggedUser,setLoggedUser,isBut
     const [click,setClick]=useState(false);
     const [friend,setFriend]=useState({user:'',id:''});
   
+    axios.defaults.withCredentials=true
 
     useEffect( () => {
         axios.get('/api/users/allFriends').then(res => {

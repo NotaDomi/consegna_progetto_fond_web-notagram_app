@@ -3,8 +3,7 @@ import { faHeart} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 
-export default function Card ({ username, myId, setLoggedUser, setLogged ,isButtonDisabled,setIsButtonDisabled}) {
-    const [isClicked, setClicked] = useState(false)
+export default function User ({ username, myId, setLoggedUser, setLogged ,isButtonDisabled,setIsButtonDisabled,allUsers, setAllUsers,showTextHome,setText}) {
 
     const addFriend = () => {
         setIsButtonDisabled(true)
@@ -13,7 +12,7 @@ export default function Card ({ username, myId, setLoggedUser, setLogged ,isButt
             username: username
         }).then( res => {
             alert(res.data.message)
-            setClicked(true)
+            setAllUsers(allUsers.filter(user=>user._id!==myId))
             setIsButtonDisabled(false)
         }).catch(error=>{
             alert(error.response.data.message)
@@ -27,12 +26,10 @@ export default function Card ({ username, myId, setLoggedUser, setLogged ,isButt
     }
 
     return (
-        <>
-        {isClicked ? <> </> : <div className="userCard"> 
+        <div className="userCard"> 
             <p> <img alt="profile" src="user.png" width="50px" heght="50px" /> <span className="user"> {username} </span> </p>
             <button className="button" onClick={addFriend} disabled={isButtonDisabled}> <span> Aggiungi amico </span> <FontAwesomeIcon icon={faHeart} />  </button>
-        </div>}
-        </>
+        </div>
     )
     
 }

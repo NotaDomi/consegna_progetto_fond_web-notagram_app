@@ -24,7 +24,7 @@ export default function Register({setLogged,setLoggedUser,setIsButtonDisabled,is
       alert(r.data.message)
       axios.get('/auth/check')
       .then((response)=>{
-      
+      console.log(response)
       setLogged(response.data.isLogged)
       setLoggedUser(response.data.user)
     })

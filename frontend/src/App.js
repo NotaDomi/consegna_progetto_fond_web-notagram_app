@@ -21,7 +21,7 @@ function App() {
     
     axios.get('/auth/check')
     .then((response)=>{
-      console.log(isLogged)
+      
       console.log(response)
       setLogged(response.data.isLogged)
       setLoggedUser(response.data.user)
@@ -31,7 +31,7 @@ function App() {
 
   useEffect(()=>{
     console.log(loggedUser)
-    console.log(isLogged)
+    
     isLogged ? navigate('/home') : navigate('/login')
   },[isLogged])
 

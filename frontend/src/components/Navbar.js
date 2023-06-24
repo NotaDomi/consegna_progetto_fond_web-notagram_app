@@ -17,16 +17,15 @@ const Navbar = ({isLogged,setLogged,loggedUser,setLoggedUser}) => {
         //get per effettuare il check sui cookie settati
         axios.get('/auth/check')
           .then((response)=>{
-          
+          console.log(response)
           setLogged(response.data.isLogged)
           setLoggedUser(response.data.user)
         })
         navigate('/login');  
     }).catch(error=>{
       alert(error.response.data.message)
-      axios.get('/auth/check')
-          .then( ()=>{
-          
+      axios.get('/auth/check').then( (response)=>{
+          console.log(response)
           setLogged(error.response.data.isLogged)
           setLoggedUser(error.response.data.user)
         })

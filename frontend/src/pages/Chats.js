@@ -4,15 +4,15 @@ import FriendList from '../components/FriendList'
 import Navbar from '../components/Navbar'
 import Loading from '../components/Loading'
 import ChatBlock from '../components/ChatBlock'
-import Banner from '../components/Banner'
+import BannerChat from '../components/BannerChat'
 
 export default function Chats({isLogged,setLogged,loggedUser,setLoggedUser,isButtonDisabled, setIsButtonDisabled}) {
-    const [allFriends, setFriends ] = useState([]);
-    const [isLoading, setLoading] = useState(true);
-    const [message,setMessage] = useState('');
-    const [messages,setMessages]=useState([]);
-    const [click,setClick]=useState(false);
-    const [friend,setFriend]=useState({user:'',id:''});
+    const [allFriends, setFriends ] = useState([])
+    const [isLoading, setLoading] = useState(true)
+    const [message,setMessage] = useState('')
+    const [messages,setMessages]=useState([])
+    const [click,setClick]=useState(false)
+    const [friend,setFriend]=useState({user:'',id:''})
   
     axios.defaults.withCredentials=true
 
@@ -24,8 +24,8 @@ export default function Chats({isLogged,setLogged,loggedUser,setLoggedUser,isBut
         }).catch(error=>{
           alert(error.response.data.message)
           axios.get('/auth/check')
-              .then( ()=>{
-             
+              .then( (response)=>{
+              console.log(response)
               setLogged(error.response.data.isLogged)
               setLoggedUser(error.response.data.user)
             })
@@ -37,8 +37,7 @@ export default function Chats({isLogged,setLogged,loggedUser,setLoggedUser,isBut
     <>
     <Navbar isLogged={isLogged} setLogged={setLogged} loggedUser={loggedUser} setLoggedUser={setLoggedUser}/> 
     {isLoading ? <Loading /> : 
-
-    <div id="chat-content">
+      <div id="chat-content">
         <FriendList 
           allFriends = {allFriends}
           setFriends={setFriends}
@@ -64,7 +63,7 @@ export default function Chats({isLogged,setLogged,loggedUser,setLoggedUser,isBut
         friend={friend}
         setFriend={setFriend} 
         />
-        : <Banner /> }
+        : <BannerChat /> }
       </div>
     </div>
   }

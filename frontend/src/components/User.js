@@ -17,8 +17,8 @@ export default function User ({ username, myId, setLoggedUser, setLogged ,isButt
         }).catch(error=>{
             alert(error.response.data.message)
             axios.get('/auth/check')
-                .then( ()=>{
-                
+                .then( (response)=>{
+                console.log(response)
                 setLogged(error.response.data.isLogged)
                 setLoggedUser(error.response.data.user)
               })

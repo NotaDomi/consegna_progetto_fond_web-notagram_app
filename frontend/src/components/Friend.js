@@ -1,9 +1,9 @@
-import {React, useState} from 'react'
+import {React} from 'react'
 import {faHeartCrack, faMessage} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 
-export default function Friend({username, myId, isLogged, setLogged, loggedUser, setLoggedUser,setMessages,setClick,setFriend,allFriends,setFriends,setIsButtonDisabled,isButtonDisabled}) {
+export default function Friend({username, myId, setLogged, loggedUser, setLoggedUser,setMessages,setClick,setFriend,allFriends,setFriends,setIsButtonDisabled,isButtonDisabled}) {
 
   const removeFriend = () => {
     setIsButtonDisabled(true)
@@ -19,7 +19,6 @@ export default function Friend({username, myId, isLogged, setLogged, loggedUser,
       alert(error.response.data.message)
       axios.get('/auth/check')
           .then((response)=>{
-          console.log(isLogged)
           console.log(response)
           setLogged(error.response.data.isLogged)
           setLoggedUser(error.response.data.user)
@@ -30,7 +29,7 @@ export default function Friend({username, myId, isLogged, setLogged, loggedUser,
 
 const apriChat = () => {
   axios.get(`/api/messages/getMessages/${loggedUser.id}/${myId}`).then( res => {
-    console.log(res.data);
+    
     setMessages(res.data);
     setClick(true);
     setFriend({user:username,id:myId})
@@ -38,7 +37,6 @@ const apriChat = () => {
     alert(error.response.data.message)
     axios.get('/auth/check')
         .then((response)=>{
-        console.log(isLogged)
         console.log(response)
         setLogged(error.response.data.isLogged)
         setLoggedUser(error.response.data.user)

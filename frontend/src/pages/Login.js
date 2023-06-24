@@ -23,7 +23,7 @@ export default function Login ({setLogged,setLoggedUser,setIsButtonDisabled,isBu
         alert(r.data.message)
         axios.get('/auth/check')
         .then((response)=>{
-        
+        console.log(response)
         setLogged(response.data.isLogged)
         setLoggedUser(response.data.user)
         

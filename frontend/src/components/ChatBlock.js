@@ -7,15 +7,15 @@ import axios from 'axios'
 
 export default function ChatBlock({message, setMessage, messages, setMessages, setLogged, loggedUser, setLoggedUser, friend, setFriend} ) {
     
-    const messageDiv = useRef(null);
+    const referenceChat = useRef(null); //reacthook per referenziare un componente 
 
     useEffect( () => {
-        if (messageDiv.current) {
-          messageDiv.current.scrollTop = messageDiv.current.scrollHeight;
+        if (referenceChat.current) {
+          referenceChat.current.scrollTop = referenceChat.current.scrollHeight;
         }
       }, [messages])
   
-  
+    
       const sendMessage = (event) => {
         event.preventDefault();
         axios.post('/api/messages/send', {
@@ -23,23 +23,22 @@ export default function ChatBlock({message, setMessage, messages, setMessages, s
             receiver: friend.id,
             content: message
         }).then( () => {
-          
-          axios.get(`/api/messages/getMessages/${loggedUser.id}/${friend.id}`).then( res => {
-            
+            axios.get(`/api/messages/getMessages/${loggedUser.id}/${friend.id}`).then( res => {
             setMessages(res.data);
             setMessage('');
           })
         }).catch(error=>{
-          alert(error.response.data.message)
-          axios.get('/auth/check')
-          .then( ()=>{
+            alert(error.response.data.message)
+            axios.get('/auth/check')
+            .then( (response)=>{
+                console.log(response)
                 setLogged(error.response.data.isLogged)
                 setLoggedUser(error.response.data.user)
             })
         })
     }
   
-  
+    //handler richiamato quando si preme sul tasto per aggiornare la chat
       const updateHandler = () => {
         axios.get(`/api/messages/getMessages/${loggedUser.id}/${friend.id}`).then( res => {
           
@@ -48,20 +47,21 @@ export default function ChatBlock({message, setMessage, messages, setMessages, s
           }).catch(error=>{
           alert(error.response.data.message)
           axios.get('/auth/check')
-              .then(()=>{
-              
-              setLogged(error.response.data.isLogged)
-              setLoggedUser(error.response.data.user)
+              .then((response)=>{
+                console.log(response)
+                setLogged(error.response.data.isLogged)
+                setLoggedUser(error.response.data.user)
             })
         })
       }
   return (
     <>
         <header id="chat-head">
+          <img alt="profile" src="user.png"/>
           <h2>{friend.user}</h2>
           <button onClick={updateHandler}> <FontAwesomeIcon icon={faArrowRotateRight} /> </button>
           </header>
-          <section id="messages" ref={messageDiv}> 
+          <section id="messages" ref={referenceChat}> 
             {messages.map((message,index)=> <Message sender={message.sender._id} loggedUser={loggedUser.id} content={message.content} key={index} timestamp={message.timestamp}/>)}
           </section>
           <form id="inputMessage" onSubmit={sendMessage}> 

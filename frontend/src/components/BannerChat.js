@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function Banner() {
+export default function BannerChat() {
   return (
-    <div className='chat-exp'>
+    <div className="chat-exp">
         <img className="logoForm" alt="Logo web-app" src="logo192.png"/><br></br>
         <br></br>Per visualizzare qui la chat
         <br></br>selezionane una dalla barra laterale

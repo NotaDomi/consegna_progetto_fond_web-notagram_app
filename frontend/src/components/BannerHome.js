@@ -7,6 +7,7 @@ export default function BannerHome() {
         <br></br>Nessun altro utente registrato sulla piattaforma da poter aggiungere agli amici,
         <br></br>attendi che qualcuno si registri 
         <br></br>per poterlo aggiungere come amico
+        <br></br>oppure vai in lista chat per chattare con i tuoi amici
     </div>
   )
 }

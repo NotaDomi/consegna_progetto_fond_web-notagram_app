@@ -33,7 +33,7 @@ export default function Login ({setLogged,setLoggedUser,setIsButtonDisabled,isBu
       }).catch( error => {
         alert(error.response.data.message)
         setSignInfo({username: '', password: ''})
-        
+        setIsButtonDisabled(false)
       } );
     
   }

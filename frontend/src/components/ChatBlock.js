@@ -37,6 +37,7 @@ export default function ChatBlock({message, setMessage, messages, setMessages, s
                 console.log(response)
                 setLogged(error.response.data.isLogged)
                 setLoggedUser(error.response.data.user)
+                navigate('/login')
             })
         })
     }
@@ -54,6 +55,7 @@ export default function ChatBlock({message, setMessage, messages, setMessages, s
                 console.log(response)
                 setLogged(error.response.data.isLogged)
                 setLoggedUser(error.response.data.user)
+                navigate('/login')
             })
         })
       }

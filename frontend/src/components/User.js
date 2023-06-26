@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { faHeart} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export default function User ({ username, myId, setLoggedUser, setLogged ,isButtonDisabled,setIsButtonDisabled,allUsers, setAllUsers,showTextHome,setText}) {
+
+    let navigate = useNavigate();
 
     const addFriend = () => {
         setIsButtonDisabled(true)
@@ -21,6 +24,8 @@ export default function User ({ username, myId, setLoggedUser, setLogged ,isButt
                 console.log(response)
                 setLogged(error.response.data.isLogged)
                 setLoggedUser(error.response.data.user)
+                setIsButtonDisabled(false)
+                navigate('/login')
               })
           })
     }

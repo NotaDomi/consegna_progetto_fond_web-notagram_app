@@ -4,11 +4,13 @@ import User from '../components/User'
 import Navbar from '../components/Navbar'
 import Loading from '../components/Loading'
 import BannerHome from '../components/BannerHome'
+import { useNavigate } from 'react-router-dom'
 
 export default function Home ({isLogged,setLogged,loggedUser,setLoggedUser,isButtonDisabled,setIsButtonDisabled}) {
     const [allUsers, setAllUsers] = useState([])
     const [isLoading, setLoading] = useState(true)
     const [showTextHome,setText]=useState(false)
+    let navigate = useNavigate();
 
     axios.defaults.withCredentials=true
 
@@ -32,6 +34,8 @@ export default function Home ({isLogged,setLogged,loggedUser,setLoggedUser,isBut
                 console.log(response)
                 setLogged(error.response.data.isLogged)
                 setLoggedUser(error.response.data.user)
+                setIsButtonDisabled(false)
+                navigate('/login')
               });
             
           })

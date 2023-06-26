@@ -22,6 +22,7 @@ export default function Friend({username, myId, setLogged, loggedUser, setLogged
           console.log(response)
           setLogged(error.response.data.isLogged)
           setLoggedUser(error.response.data.user)
+          setIsButtonDisabled(false)
         })
     })
     

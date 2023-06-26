@@ -3,11 +3,14 @@ import { faPaperPlane, faArrowRotateRight } from '@fortawesome/free-solid-svg-ic
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useRef } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+import Chats from './../pages/Chats';
 
 
 export default function ChatBlock({message, setMessage, messages, setMessages, setLogged, loggedUser, setLoggedUser, friend, setFriend} ) {
     
     const referenceChat = useRef(null); //reacthook per referenziare un componente 
+    const navigate = useNavigate()
 
     useEffect( () => {
         if (referenceChat.current) {
@@ -16,7 +19,7 @@ export default function ChatBlock({message, setMessage, messages, setMessages, s
       }, [messages])
   
     
-      const sendMessage = (event) => {
+      const sendMessage = (event) => { 
         event.preventDefault();
         axios.post('/api/messages/send', {
             sender: loggedUser.id,

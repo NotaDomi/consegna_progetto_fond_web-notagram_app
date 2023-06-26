@@ -16,12 +16,16 @@ module.exports = {
     },
     
     sendMessage: (req,res)=>{
-        Message.create({
-            sender: req.body.sender,
-            receiver: req.body.receiver,
-            content: req.body.content,
-            timestamp: new Date().toLocaleString()
-        })
-        .then(r=>res.json({ message: 'Messaggio inviato' }))
+        if(req.body.content!==''){
+            Message.create({
+                sender: req.body.sender,
+                receiver: req.body.receiver,
+                content: req.body.content,
+                timestamp: new Date().toLocaleString()
+            })
+            .then(r=>res.json({ message: 'Messaggio inviato' }))
+        }else{
+            res.status(200).json({ message: 'Messaggio vuoto. Scrivi qualcosa prima di inviare un messaggio' })
+        }
     }
 }

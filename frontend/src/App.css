@@ -1,5 +1,4 @@
 
-
 body {
   background-image: url('../public/vanishing-stripes.svg');
   background-repeat: repeat;
@@ -127,12 +126,12 @@ body {
   word-break: break-all;
   font-size: large;
   font-weight: 400;
-  color: rgb(2, 2, 117);
+  color: rgb(0, 0, 0);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 #user-container {
-  height: 76vh;
+  height: 80vh;
   background-color: rgba(70, 92, 217, 0.4) ;
   display: flex;
   flex-wrap: wrap;
@@ -174,7 +173,7 @@ nav {
 }
 
 .logo {
-  width: 3.5vh;
+  width: 3.5vw;
 }
 
 nav ul {
@@ -229,56 +228,7 @@ nav li:hover {
   font-weight: bolder;
 }
 
-@media (max-width: 800px) {
-  .username {
-    font-size: 3vw;
-    line-break: auto;
-    font-weight:bold;
-  }
-  
-  .logo {
-    width: 1.4lh;
-  }
 
-  nav ul {
-    margin: 10px 0px 10px 0px;
-    padding:0px;
-    list-style: none;
-    display: flex;
-    flex: 2 70vw;
-    gap: 2vw;
-    justify-content:flex-end;
-    padding-inline-end: 5px;
-    align-self: flex-end;
-  }
-
-  .navLink {
-    text-decoration: none;
-    color:inherit;
-    padding: 5px;
-    font-weight: bold;
-    text-align: justify;
-    font-size: 3vw;
-  }
-  
-  nav li {
-    border-radius: 20px;
-    padding: 10px 5px 10px 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1lh;
-  }
-  
-  nav li:hover {
-    transition: 0.3s;
-    box-shadow: 5px 5px 20px lightgray;
-    transform: scale(1.15);
-    text-shadow: #1890ff 0.4;
-    background-color: aliceblue;
-    cursor: pointer;
-  }
-}
 
 #chat-content {
   display: grid;
@@ -490,7 +440,192 @@ nav li:hover {
   text-align: center;
  }
 
+ @media (max-width: 600px) {
 
+  .userCard {
+    width:inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
+    gap: 5px;
+    padding: 20px 30px;
+    border-radius: 20px;
+    background-color: rgba(187, 196, 248, 0.9);
+    border: 1px rgba(211,211,211,0.5) solid;
+    margin: 10px;
+    transition: 0.6s;
+  }
+
+  .userCard p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    margin: 5px;
+  }
+  
+  .userCard:hover {
+    transition: 0.6s;
+    box-shadow: 5px 5px 20px lightgray;
+    cursor: pointer;
+  }
+  
+  .userCard .user {
+    word-break: break-all;
+    font-size: 4vw;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  #user-container {
+    height: 70vh;
+    background-color: rgba(70, 92, 217, 0.4) ;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    margin: 4vh 3vw;
+    padding: 5px;
+    column-gap: 10px;
+    row-gap: 10px;
+    overflow-y: scroll;
+    border-radius: 20px;
+  }
+
+  .username {
+    font-size: 3vw;
+    line-break: auto;
+    font-weight:bold;
+  }
+  
+  .logo {
+    width: 1.4lh;
+  }
+
+  nav ul {
+    margin: 10px 0px 10px 0px;
+    padding:0px;
+    list-style: none;
+    display: flex;
+    flex: 2 70vw;
+    gap: 2vw;
+    justify-content:flex-end;
+    padding-inline-end: 5px;
+    align-self: flex-end;
+  }
+
+  .navLink {
+    text-decoration: none;
+    color:inherit;
+    padding: 5px;
+    font-weight: bold;
+    text-align: justify;
+    font-size: 3vw;
+  }
+  
+  nav li {
+    border-radius: 20px;
+    padding: 10px 5px 10px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1lh;
+  }
+  
+  nav li:hover {
+    transition: 0.3s;
+    box-shadow: 5px 5px 20px lightgray;
+    transform: scale(1.15);
+    text-shadow: #1890ff 0.4;
+    background-color: aliceblue;
+    cursor: pointer;
+  }
+
+  #chat-content {
+    display: grid;
+    grid-template-areas: 
+      "aside-friends aside-friends "
+      "chat-container chat-container ";
+    grid-template-rows: 40vw auto;
+    overflow-x: hidden;
+    height: 70vh;
+    width:max-content;
+    margin: 4vh 3vw;
+    gap: 2vw;
+    justify-content: flex-end;
+  }
+
+  .userCard p img{
+    width: 6vw;
+  }
+
+  .button {
+    font-size: 3vw;
+    padding: 5px;
+    border-color: blue;
+    border-radius: 10px;
+    background-color: aliceblue;
+  }
+
+  #chat-container h2 {
+    flex: 10 fit-content;
+    font-size: 1.0em;
+    margin-block: 0;
+    align-content: center;
+    padding-inline-start: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+  }
+
+  #chat-head img {
+    margin: auto;
+    padding-left: 7.5px;
+    width: 30px;
+    height: 30px;  
+  }
+
+  #inputMessage input {
+    width: 50vw;
+    height: 100%;
+    border-radius: 15px;
+    resize: none;
+    padding: 0;
+    border: 0;
+    font-size: 3vw;
+    padding-inline-start: 10px;
+    background-color: rgb(187, 196, 248);
+    caret-color: #1890ff;
+  }
+  
+  #inputMessage .button {
+    padding-left: 5px;
+    font-size: 3vw;
+    height: 100%;
+    transform: none;
+    border-radius: 20px;
+    background-color: rgb(187, 196, 248);
+  }
+
+  .message-left, .message-right {
+    border-radius: 15px;
+    font-size: 3vw;
+    max-width: 50%;
+    width: fit-content;
+    padding: 5px 10px 5px 10px;
+  }
+
+  #aside-friends >p {
+    align-self: center;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: rgba(187, 196, 248);
+    font-weight: bold;
+  }
+}
  
 
 

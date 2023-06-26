@@ -8,6 +8,16 @@ const cors = require('cors')
 const https = require('https')
 const fs = require('fs')
 
+/*
+Qui abbiamo usato alcuni moduli non visti a lezione per poter implementare cose più avanzate
+
+- dotenv è stato usato per poter usare le variabili d'ambiente dal file .env (file non caricato nella nostra repository gitHub grazie al file .gitignore)
+
+- cookie-parser e express-session sono stati usati per la gestione del cookie (nonostante si usi https l'attributo secure è stato settato commentato 
+  perché testando l'applicazione su rete locale e non localhost dava problemi con il salvataggio del cookie)
+
+Per il resto viene settato tutto come visto a lezione e grazie ai campi options viene settato l'utilizzo del https invece che http
+*/
 
 const app = express()
 

@@ -1,6 +1,15 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 
+/*
+La collezione users è composta da record User che avranno indicazioni sullo username, password e amici.
+
+La password è criptata usando bcryptjs e con l'utilizzo di un certificato autofirmato abbiamo implementato
+l'utilizzo di https così da avere una password criptata sul DB ma anche criptata mentre è "in volo" verso il server.
+
+Il metodo comparePassword ci permette di verificare che l'utente che sta tentando il login ha inserito correttamente la password
+*/
+
 const userSchema = mongoose.Schema({
   username: {
     type: String,

@@ -1,5 +1,16 @@
 const Message = require('../models/messages')
 
+/*
+In questo file abbiamo gestito i controllers per la visualizzazione della chat e l'invio del messaggio al percorso /api/messages con i suoi sottopercorsi
+
+/getMessages/:sender/:receiver --> utilizza il controller getMessagesBySenderAndReceiver che ritornerà al frontend la lista di messaggi tra i due utenti (quello loggato e l'amico scelto)
+
+/send --> utilizza il controller sendMessage per salvare nel database il messaggio inviato
+
+in entrambi i casi prima di giungere all'uso del controller ci sarà il middleware che si occuperà di verificare che ci sia un utente loggato e quindi autorizzato a usare queste api
+
+*/
+
 module.exports = {
   
     getMessagesBySenderAndReceiver: (req,res)=>{

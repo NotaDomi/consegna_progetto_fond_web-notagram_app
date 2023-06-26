@@ -2,8 +2,11 @@ import {React} from 'react'
 import {faHeartCrack, faMessage} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export default function Friend({username, myId, setLogged, loggedUser, setLoggedUser,setMessages,setClick,setFriend,allFriends,setFriends,setIsButtonDisabled,isButtonDisabled}) {
+
+  let navigate=useNavigate()
 
   const removeFriend = () => {
     setIsButtonDisabled(true)
@@ -41,6 +44,8 @@ const apriChat = () => {
         console.log(response)
         setLogged(error.response.data.isLogged)
         setLoggedUser(error.response.data.user)
+        setIsButtonDisabled(false)
+        navigate('/login')
       })
   })
 }

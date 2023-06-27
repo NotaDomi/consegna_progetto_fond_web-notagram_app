@@ -17,6 +17,8 @@ Qui abbiamo usato alcuni moduli non visti a lezione per poter implementare cose 
   perché testando l'applicazione su rete locale e non localhost dava problemi con il salvataggio del cookie)
 
 Per il resto viene settato tutto come visto a lezione e grazie ai campi options viene specificato l'utilizzo del https invece che http
+
+Le API sono state testate anche su postman e come previsto per essere utilizzate richiedono l'autenticazione
 */
 
 const app = express()

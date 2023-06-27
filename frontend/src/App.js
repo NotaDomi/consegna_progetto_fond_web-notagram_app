@@ -10,6 +10,14 @@ import Register from './pages/Register'
 import Home from './pages/Home'
 import Login from './pages/Login'
 
+/*
+Sono stati creati 2 profili per effettuare delle prove le credenziali sono: 
+  giuseppe - 123123
+  Raffo - 123
+
+Ovviamente rimane possibile effettuare una propria registrazione e verificare il funzionamento della web app
+*/
+
 export default function App() {
 //stato che tiene traccia se l'utente è loggato o meno (settato a false quando si effettua il logout)
   const [isLogged, setLogged] = useState(false); 

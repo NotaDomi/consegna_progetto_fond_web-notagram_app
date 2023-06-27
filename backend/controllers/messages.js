@@ -34,7 +34,7 @@ module.exports = {
                 content: req.body.content,
                 timestamp: new Date().toLocaleString()
             })
-            .then(r=>res.json({ message: 'Messaggio inviato' }))
+            .then( () => res.json({ message: 'Messaggio inviato' }))
         }else{
             res.status(200).json({ message: 'Messaggio vuoto. Scrivi qualcosa prima di inviare un messaggio' })
         }

@@ -26,13 +26,12 @@ export default function Login ({setLogged,setLoggedUser,setIsButtonDisabled,isBu
         console.log(response)
         setLogged(response.data.isLogged)
         setLoggedUser(response.data.user)
-        
       })
         setIsButtonDisabled(false)
-        navigate('/home')
+        navigate('/home')                            //se il login va a buon fine vengo redirezionato alla home
       }).catch( error => {
         alert(error.response.data.message)
-        setSignInfo({username: '', password: ''})
+        setSignInfo({username: '', password: ''})   //azzero lo stato relativo ai campi del form
         setIsButtonDisabled(false)
       } );
     

@@ -26,6 +26,7 @@ export default function Friend({username, myId, setLogged, loggedUser, setLogged
           setLogged(error.response.data.isLogged)
           setLoggedUser(error.response.data.user)
           setIsButtonDisabled(false)
+          navigate('/login')
         })
     })
     

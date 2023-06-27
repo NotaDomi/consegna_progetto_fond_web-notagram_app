@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-const Navbar = ({isLogged,setLogged,loggedUser,setLoggedUser}) => {
+export default function Navbar ({isLogged,setLogged,loggedUser,setLoggedUser})  {
   const navigate = useNavigate()
 
   axios.defaults.withCredentials=true
@@ -47,4 +47,3 @@ const Navbar = ({isLogged,setLogged,loggedUser,setLoggedUser}) => {
   );
 }
 
-export default Navbar;

@@ -1,16 +1,16 @@
 import Message from './Message'
 import { faPaperPlane, faArrowRotateRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-import Chats from './../pages/Chats';
 
 
-export default function ChatBlock({message, setMessage, messages, setMessages, setLogged, loggedUser, setLoggedUser, friend, setFriend} ) {
-    
+
+export default function ChatBlock({messages, setMessages, setLogged, loggedUser, setLoggedUser, friend, setFriend} ) {
+  const [message,setMessage] = useState('')
     const referenceChat = useRef(null); //reacthook per referenziare un componente 
-    const navigate = useNavigate()
+    const navigate = useNavigate()      //reacthook per la navigazione tra le pagine
 
     useEffect( () => {
         if (referenceChat.current) {
@@ -32,7 +32,7 @@ export default function ChatBlock({message, setMessage, messages, setMessages, s
           })
         }).catch(error=>{
             alert(error.response.data.message)
-            axios.get('/auth/check')
+            axios.get('/auth/check')          
             .then( (response)=>{
                 console.log(response)
                 setLogged(error.response.data.isLogged)
@@ -42,7 +42,7 @@ export default function ChatBlock({message, setMessage, messages, setMessages, s
         })
     }
   
-    //handler richiamato quando si preme sul tasto per aggiornare la chat
+    //handler richiamato quando si preme sul tasto per aggiornare la chat (abbiamo deciso di non utilizzare l'approccio real-time)
       const updateHandler = () => {
         axios.get(`/api/messages/getMessages/${loggedUser.id}/${friend.id}`).then( res => {
           

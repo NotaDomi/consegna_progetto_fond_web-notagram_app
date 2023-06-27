@@ -10,18 +10,26 @@ import Register from './pages/Register'
 import Home from './pages/Home'
 import Login from './pages/Login'
 
-function App() {
-  const [isLogged, setLogged] = useState(false);
-  const [loggedUser,setLoggedUser] = useState({username:'', id:''})
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false)
+export default function App() {
+//stato che tiene traccia se l'utente è loggato o meno (settato a false quando si effettua il logout)
+  const [isLogged, setLogged] = useState(false); 
 
+//stato che tiene traccia dell'utente loggato
+  const [loggedUser,setLoggedUser] = useState({username:'', id:''})  
+  
+//stato per disabilitare tutti i button quando si preme su uno di loro(provare l'app per comprendere)  
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false)    
+
+//react-hook utile per effettuare la redirezione
   const navigate = useNavigate()
 
+
+/* 
+Appena caricata l'app viene verificato se la sessione è ancora valida, e setta isLogged e loggedUser 
+in base alle informazioni correnti
+*/
   useEffect( () => { 
-    
-    axios.get('/auth/check')
-    .then((response)=>{
-      
+    axios.get('/auth/check').then((response)=>{
       console.log(response)
       setLogged(response.data.isLogged)
       setLoggedUser(response.data.user)
@@ -29,9 +37,16 @@ function App() {
     
   }, [] )
 
+
+/* 
+useEffect eseguito solo quando cambia isLogged (scaduto il cookie o effettuato il logout)
+una volta loggato isLogged è true e mi reindirizza alla home
+Se scade il cookie o effettuo il logout, isLogged va a false e vengo reindirizzato alla pagina di login
+Ogni volta che aprirò l'app e la sessione è ancora attiva visualizzerò direttamente la home senza dovre rieffettuare il login
+
+*/
   useEffect(()=>{
     console.log(loggedUser)
-    
     isLogged ? navigate('/home') : navigate('/login')
   },[isLogged])
 
@@ -48,4 +63,4 @@ return (
   );
 }
 
-export default App;
+

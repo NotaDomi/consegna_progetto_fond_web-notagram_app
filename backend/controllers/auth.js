@@ -3,13 +3,13 @@ const User = require('../models/users')
 /*
 In questo file abbiamo gestito i controllers per l'autenticazione al percorso /auth con i suoi sottopercorsi
 
-/check --> utilizza il controller getUserLogged che ritornerà al frontend l'utente corrispondente al valore salvato nel cookie (su questo metodo non è applicato il middleware requireAuth)
+/check --> utilizza il controller getUserLogged che ritornerà al frontend l'id dell'utente corrispondente al valore salvato nel cookie (su questo metodo non è applicato il middleware requireAuth)
 
 /register --> utilizza il controller registerUser che permetterà di registrare un utente controllando che l'username non sia già utilizzato (su questo metodo non è applicato il middleware requireAuth)
 
 /login --> utilizza il controller loginUser che permetterà di effettuare il login usando il metodo compare che abbiamo definito nel model users (su questo metodo non è applicato il middleware requireAuth)
 
-/logout --> utilizza il controller logoutUser che permetterà di effettuare il logout andando a comunicare al client di eliminare il cookie (su questo metodo è applicato il middleware requireAuth)
+/logout --> utilizza il controller logoutUser che permetterà di effettuare il logout comunicando al client di eliminare il cookie (su questo metodo è applicato il middleware requireAuth)
 
 La scelta di usare il middleware solo sul logout verrà spiegata nel file apposito
 

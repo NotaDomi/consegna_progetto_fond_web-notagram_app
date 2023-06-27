@@ -2,10 +2,9 @@ const User = require('../models/users.js')
 
 /*
 Questo è il middleware che si occuperà di verificare che il cookie mandato dal client contenga le informazioni di un utente loggato. 
-Viene usato su tutti i sottopercorsi di /api e per il percorso /aut/logout
+Viene usato su tutti i sottopercorsi di /api e per il percorso /auth/logout
 
-Questa scelta è stata effettuata perché scaduta la sessione settata a 24 ore o non avendo effettuato il login non si deve essere 
-autorizzati a usare le api dei relativi percorsi scritti sopra
+Il middleware è necessario per impedire l'utilizzo delle api se non si è autenticati, o se la sessione ( maxAge: 24 ore) risulta scaduta
 */
 
 module.exports = {

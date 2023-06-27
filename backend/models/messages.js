@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 /*
-La collezione messages è composta da record Message che avranno indicazioni sul mittente, sul destinatario, un contenuto e un orario
+La collezione messages è composta da record Message che avranno indicazioni sul mittente, sul destinatario, un contenuto e un timestamp(data di invio messaggio)
 */
 
 const messagesSchema = mongoose.Schema({

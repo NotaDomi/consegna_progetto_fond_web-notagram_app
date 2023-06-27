@@ -9,10 +9,10 @@ import BannerChat from '../components/BannerChat'
 export default function Chats({isLogged,setLogged,loggedUser,setLoggedUser,isButtonDisabled, setIsButtonDisabled}) {
     const [allFriends, setFriends ] = useState([])
     const [isLoading, setLoading] = useState(true)
-    const [message,setMessage] = useState('')
+    
     const [messages,setMessages]=useState([])
     const [click,setClick]=useState(false)
-    const [friend,setFriend]=useState({user:'',id:''})
+    const [friend,setFriend]=useState({user:'',id:''})  
   
     axios.defaults.withCredentials=true
 
@@ -53,8 +53,6 @@ export default function Chats({isLogged,setLogged,loggedUser,setLoggedUser,isBut
     <div id="chat-container">
         {click ? 
         <ChatBlock 
-        message={message} 
-        setMessage={setMessage}
         messages={messages}  
         setMessages={setMessages}
         setLogged={setLogged} 

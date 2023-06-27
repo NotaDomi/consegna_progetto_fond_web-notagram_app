@@ -14,11 +14,16 @@ export default function Home ({isLogged,setLogged,loggedUser,setLoggedUser,isBut
 
     axios.defaults.withCredentials=true
 
+
+/* 
+useEffect eseguito ogni volta che allUsers cambia (accade quando aggiungiamo un nuovo utente come amico, rimuovendolo dal relativo stato)
+Se non ci sono più utenti da visualizzare allora setta lo stato showTextHome a true in maniera tale da visualizzare il componente BannerHome
+*/
     useEffect(()=>{
         allUsers.length>0 ? setText(false):setText(true)
     },[allUsers])
 
-    axios.defaults.withCredentials=true
+    
 
     useEffect( () => { 
 
